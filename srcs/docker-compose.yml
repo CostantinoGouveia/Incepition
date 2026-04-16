@@ -3,12 +3,14 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
-    restart: always
+    restart: unless-stopped
     volumes:
       - mariadb_data:/var/lib/mysql
     secrets:
       - db_password
       - db_root_password
+    env_file:
+      - .env
     networks:
       - inception
 
@@ -17,7 +19,7 @@ services:
     container_name: wordpress
     depends_on:
       - mariadb
-    restart: always
+    restart: unless-stopped
     volumes:
       - wordpress_data:/var/www/html
     secrets:
@@ -27,19 +29,42 @@ services:
     networks:
       - inception
 
-  #nginx:
-  #  build: ./requirements/nginx
-  #  container_name: nginx
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_data:/var/www/html:ro
+    networks:
+      - inception
 
 volumes:
   mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/mariadb
   wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/mariadb
 
 secrets:
   db_password:
-    file: ../secrets/db_password.txt
+    file: ../secrets/db_password.ss
   db_root_password:
-    file: ../secrets/db_root_password.txt
+    file: ../secrets/db_root_password.ss
+  wp_editor_password:
+    file: ../secrets/wp_editor_password.ss
+  wp_admin_password:
+    file: ../secrets/wp_admin_password.ss
 
 networks:
   inception:
