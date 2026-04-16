@@ -2,9 +2,11 @@
 set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)
+WP_EDITOR_PASSWORD=$(cat /run/secrets/wp_editor_password)
+WP_ADMIN_PASSWORD=$(cat /run/secrets/wp_admin_password)
 
 # esperar MariaDB
-for i in {1..60}; do
+for i in $(seq 1 60); do
     if mariadb-admin ping -h"${DB_HOST}" -u"${MYSQL_USER}" -p"${DB_PASSWORD}" > /dev/null 2>&1; then
         break
     fi
