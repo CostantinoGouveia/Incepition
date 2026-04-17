@@ -24,6 +24,8 @@ services:
       - wordpress_data:/var/www/html
     secrets:
       - db_password
+      - wp_editor_password
+      - wp_admin_password
     env_file:
       - .env
     networks:
@@ -39,6 +41,8 @@ services:
       - "443:443"
     volumes:
       - wordpress_data:/var/www/html:ro
+    env_file:
+      - .env
     networks:
       - inception
 
