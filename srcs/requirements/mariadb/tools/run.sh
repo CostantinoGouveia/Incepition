@@ -2,7 +2,9 @@
 set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)
+
 DB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
+
 INITIALIZED=0
 # Permissões
 chown -R mysql:mysql /var/lib/mysql
@@ -42,15 +44,15 @@ fi
 # Configuração inicial
 if [ "$INITIALIZED" -eq 1 ]; then
     mariadb --socket=/tmp/mysql.sock -uroot <<-SQL
-    ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
-    FLUSH PRIVILEGES;
-SQL
+	ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
+	FLUSH PRIVILEGES;
+	SQL
 fi
 
 # Criar DB e user
 mariadb --socket=/tmp/mysql.sock -uroot -p"${DB_ROOT_PASSWORD}" <<-SQL
 CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;
-CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}
+CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
 GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 FLUSH PRIVILEGES;
 SQL
