@@ -10,7 +10,7 @@ if [ ! -f "/etc/nginx/ssl/${DOMAIN_NAME}.crt" ]; then
         -subj "/C=AO/ST=Luanda/L=Luanda/O=42/CN=${DOMAIN_NAME}"
 fi
 
-envsubst '${DOMAIN_NAME}' \
+envsubst '$DOMAIN_NAME' \
     < /etc/nginx/templates/nginx.conf.template \
     > /etc/nginx/conf.d/default.conf
 
