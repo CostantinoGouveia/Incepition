@@ -1,6 +1,6 @@
 FROM debian:oldstable
 
-RUN apt update && apt install -y mariadb-server mariadb-client \
+RUN apt-get update && apt-get install -y mariadb-server mariadb-client \
     && rm -rf /var/lib/apt/lists/*
 
 COPY conf/50-server.cnf /etc/mysql/mariadb.cnf.d/50-server.cnf
