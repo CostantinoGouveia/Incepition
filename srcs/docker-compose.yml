@@ -58,7 +58,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/data/mariadb
+      device: ~/data/wordpress
 
 secrets:
   db_password:
