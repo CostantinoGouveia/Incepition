@@ -20,13 +20,18 @@ re: fclean all
 logs:
 	@$(COMPOSE) logs -f
 
+
 ps:
 	@$(COMPOSE) ps
+
 
 volumes:
 	docker volume ls
 
+
 networks:
 	docker network ls
+
+
 
 .PHONY: all down clean fclean re logs ps
