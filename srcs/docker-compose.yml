@@ -60,6 +60,7 @@ volumes:
       o: bind
       device: ~/data/wordpress
 
+
 secrets:
   db_password:
     file: ../secrets/db_password.ss
@@ -69,6 +70,7 @@ secrets:
     file: ../secrets/wp_editor_password.ss
   wp_admin_password:
     file: ../secrets/wp_admin_password.ss
+
 
 networks:
   inception:
