@@ -234,7 +234,7 @@ After running the project:
 https://localhost:443
 ```
 
-* WordPress installation page should appear
+* The main page of a standard WordPress website should appear.
 
 ---
 
