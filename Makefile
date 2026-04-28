@@ -4,6 +4,12 @@ all:
 	@mkdir -p ~/data/mariadb ~/data/wordpress
 	@$(COMPOSE) up --build -d
 
+build:
+	@$(COMPOSE) build --no-cache
+
+up:
+	@$(COMPOSE) up -d
+
 down:
 	@$(COMPOSE) down
 
@@ -34,4 +40,4 @@ networks:
 
 
 
-.PHONY: all down clean fclean re logs ps
+.PHONY: all down clean fclean re logs ps up build volumes networks
