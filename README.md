@@ -36,8 +36,73 @@ The objective is to understand:
 Clone the repository:
 
 ```bash
+git clone <REPOSITORY_URL>
 cd inception/
 ```
+
+> Note: Before proceeding, you need to place the secrets files and the .env file in the correct directories as shown below:
+
+```bash
+inception/
+├── DEV_DOC.md
+├── Makefile
+├── packages.microsoft.gpg
+├── README.md
+├── secrets/
+│   ├── db_password.ss
+│   ├── db_root_password.ss
+│   ├── wp_admin_password.ss
+│   └── wp_editor_password.ss
+├── srcs/
+│   ├── docker-compose.yml
+│   ├── .env
+│   └── requirements/
+│       ├── mariadb/
+│       │   ├── conf/
+│       │   │   └── 50-server.cnf
+│       │   ├── Dockerfile
+│       │   └── tools/
+│       │       └── run.sh
+│       ├── nginx/
+│       │   ├── conf/
+│       │   │   └── nginx.conf.template
+│       │   ├── Dockerfile
+│       │   └── tools/
+│       │       └── run.sh
+│       └── wordpress/
+│           ├── conf/
+│           │   └── www.conf
+│           ├── Dockerfile
+│           └── tools/
+│               └── run.sh
+└── USER_DOC.md
+```
+
+#### Add the secrets files
+
+Copy the provided secrets files:
+
+* db_password.ss
+* db_root_password.ss
+* wp_admin_password.ss
+* wp_editor_password.ss
+
+into the secrets/ folder at the root of the project.
+
+#### Configure the .env file
+
+Edit the .env file located in srcs/ with the corresponding passwords:
+```bash
+DB_NAME=wordpress
+DB_USER=wp_user
+DB_PASSWORD=<contents of db_password.ss>
+DB_ROOT_PASSWORD=<contents of db_root_password.ss>
+WP_ADMIN_PASSWORD=<contents of wp_admin_password.ss>
+WP_EDITOR_PASSWORD=<contents of wp_editor_password.ss>
+
+```
+
+> Important: Copy only the contents of the .ss files, not the file names.
 
 ---
 
