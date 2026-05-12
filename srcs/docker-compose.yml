@@ -3,6 +3,7 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
+    image: mariadb
     restart: unless-stopped
     volumes:
       - mariadb_data:/var/lib/mysql
@@ -17,6 +18,7 @@ services:
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
+    image: wordpress
     depends_on:
       - mariadb
     restart: unless-stopped
@@ -34,6 +36,7 @@ services:
   nginx:
     build: ./requirements/nginx
     container_name: nginx
+    image: nginx
     restart: unless-stopped
     depends_on:
       - wordpress
