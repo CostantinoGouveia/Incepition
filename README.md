@@ -355,7 +355,7 @@ AI tools (such as ChatGPT) were used in this project to:
 * Understand Docker concepts and architecture
 * Debug container communication issues
 * Improve shell scripts and configurations
-* Assist in writing documentation (README)
+* Assist in writing documentation (README, USER_DOC, DEV_DOC)
 
 All configurations and implementations were manually reviewed and adapted.
 
