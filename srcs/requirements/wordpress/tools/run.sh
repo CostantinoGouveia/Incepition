@@ -51,16 +51,16 @@ if [ ! -f wp-config.php ]; then
 
     # ========== CRIAÇÃO DA CONFIGURAÇÃO DO WORDPRESS ==========
     # Cria o ficheiro wp-config.php com os dados de conexão à base de dados
+    # --dbname: Nome da base de dados (vem da variável de ambiente)
+    # --dbuser: Utilizador da base de dados
+    # --dbpass: Password do utilizador da base de dados
+    # --dbhost: Host/endereço do servidor MariaDB na rede Docker
+    # --allow-root: Permite execução como root
     wp config create \
-        # --dbname: Nome da base de dados (vem da variável de ambiente)
         --dbname="${MYSQL_DATABASE}" \
-        # --dbuser: Utilizador da base de dados
         --dbuser="${MYSQL_USER}" \
-        # --dbpass: Password do utilizador da base de dados
         --dbpass="${DB_PASSWORD}" \
-        # --dbhost: Host/endereço do servidor MariaDB na rede Docker
         --dbhost="${DB_HOST}" \
-        # --allow-root: Permite execução como root
         --allow-root
 
     # ========== INSTALAÇÃO DO WORDPRESS ==========
