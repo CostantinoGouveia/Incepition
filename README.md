@@ -215,12 +215,6 @@ All services communicate through a custom **Docker network**.
 | Slower startup       | Fast startup            |
 | Strong isolation     | Process-level isolation |
 
- Docker was chosen because it is:
-
-* Faster
-* More efficient
-* Easier to manage for microservices
-
 ---
 
 ###  Secrets vs Environment Variables
@@ -336,6 +330,7 @@ docker network ls
 * Docker Official Docs: https://docs.docker.com/
 * Docker Compose: https://docs.docker.com/compose/
 * MariaDB Docs: https://mariadb.org/documentation/
+* PHP-FPM Docs: https://www.php.net/manual/pt_BR/install.fpm.php
 * WordPress Docs: https://developer.wordpress.org/
 
 ---
