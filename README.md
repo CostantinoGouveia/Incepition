@@ -356,6 +356,7 @@ AI tools (such as ChatGPT) were used in this project to:
 * Debug container communication issues
 * Improve shell scripts and configurations
 * Assist in writing documentation (README, USER_DOC, DEV_DOC)
+* Assisting in commenting on the code, making it more descriptive.
 
 All configurations and implementations were manually reviewed and adapted.
 
